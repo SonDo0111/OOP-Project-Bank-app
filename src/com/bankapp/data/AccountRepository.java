@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * AccountRepository - Data access object for Account entities.
- * Handles account storage and retrieval operations.
+ * AccountRepository - Đối tượng truy xuất dữ liệu cho thực thể Account.
+ * Xử lý việc lưu trữ và truy vấn tài khoản.
  */
 public class AccountRepository {
     private Map<String, Account> accounts; // accountNumber -> Account
@@ -16,10 +16,10 @@ public class AccountRepository {
     }
 
     /**
-     * Saves an account to the repository.
+     * Lưu một tài khoản vào repository.
      *
-     * @param account Account object to save
-     * @return true if saved successfully, false if account already exists
+     * @param account Đối tượng Account cần lưu
+     * @return true nếu lưu thành công, false nếu tài khoản đã tồn tại
      */
     public boolean save(Account account) {
         if (account == null || accounts.containsKey(account.getAccountNumber())) {
@@ -30,20 +30,20 @@ public class AccountRepository {
     }
 
     /**
-     * Finds an account by account number.
+     * Tìm tài khoản theo số tài khoản.
      *
-     * @param accountNumber Account number to search for
-     * @return Account object if found, null otherwise
+     * @param accountNumber Số tài khoản cần tìm
+     * @return Đối tượng Account nếu tìm thấy, null nếu không
      */
     public Account findByAccountNumber(String accountNumber) {
         return accounts.get(accountNumber);
     }
 
     /**
-     * Updates an existing account.
+     * Cập nhật một tài khoản đã tồn tại.
      *
-     * @param account Account object to update
-     * @return true if updated successfully, false if account not found
+     * @param account Đối tượng Account cần cập nhật
+     * @return true nếu cập nhật thành công, false nếu không tìm thấy tài khoản
      */
     public boolean update(Account account) {
         if (account == null || !accounts.containsKey(account.getAccountNumber())) {
@@ -54,36 +54,36 @@ public class AccountRepository {
     }
 
     /**
-     * Deletes an account from the repository.
+     * Xóa một tài khoản khỏi repository.
      *
-     * @param accountNumber Account number to delete
-     * @return true if deleted successfully, false if account not found
+     * @param accountNumber Số tài khoản cần xóa
+     * @return true nếu xóa thành công, false nếu không tìm thấy
      */
     public boolean delete(String accountNumber) {
         return accounts.remove(accountNumber) != null;
     }
 
     /**
-     * Checks if an account exists.
+     * Kiểm tra một tài khoản có tồn tại không.
      *
-     * @param accountNumber Account number to check
-     * @return true if account exists, false otherwise
+     * @param accountNumber Số tài khoản cần kiểm tra
+     * @return true nếu tồn tại, false nếu không
      */
     public boolean exists(String accountNumber) {
         return accounts.containsKey(accountNumber);
     }
 
     /**
-     * Gets the total number of accounts.
+     * Lấy tổng số lượng tài khoản.
      *
-     * @return Account count
+     * @return Số lượng tài khoản
      */
     public int getAccountCount() {
         return accounts.size();
     }
 
     /**
-     * Clears all accounts from the repository.
+     * Xóa toàn bộ tài khoản khỏi repository.
      */
     public void clear() {
         accounts.clear();

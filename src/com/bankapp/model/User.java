@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * User class representing a bank customer.
- * Encapsulates user information and manages associated accounts.
+ * Lớp User đại diện cho một khách hàng ngân hàng.
+ * Bao đóng thông tin người dùng và quản lý các tài khoản liên kết.
  */
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -19,13 +19,13 @@ public class User implements Serializable {
     private long createdAt;
 
     /**
-     * Constructor for creating a new User.
+     * Constructor tạo một User mới.
      *
-     * @param userId       Unique identifier for the user
-     * @param username     Username for login
-     * @param passwordHash Hashed password for security
-     * @param fullName     User's full name
-     * @param email        User's email address
+     * @param userId       Mã định danh duy nhất cho người dùng
+     * @param username     Tên đăng nhập
+     * @param passwordHash Mật khẩu đã được băm để bảo mật
+     * @param fullName     Họ tên đầy đủ của người dùng
+     * @param email        Địa chỉ email của người dùng
      */
     public User(String userId, String username, String passwordHash, String fullName, String email) {
         this.userId = userId;
@@ -78,11 +78,11 @@ public class User implements Serializable {
     // ============= Account Management =============
 
     /**
-     * Adds an account to the user's account list.
-     * Prevents duplicate accounts.
+     * Thêm một tài khoản vào danh sách tài khoản của người dùng.
+     * Ngăn chặn việc thêm trùng tài khoản.
      *
-     * @param account Account to be added
-     * @return true if account was added successfully, false otherwise
+     * @param account Tài khoản cần thêm
+     * @return true nếu thêm thành công, false nếu không
      */
     public boolean addAccount(Account account) {
         if (account != null && !accounts.contains(account)) {
@@ -92,10 +92,10 @@ public class User implements Serializable {
     }
 
     /**
-     * Retrieves an account by its account number.
+     * Lấy một tài khoản theo số tài khoản.
      *
-     * @param accountNumber The account number to search for
-     * @return Account object if found, null otherwise
+     * @param accountNumber Số tài khoản cần tìm
+     * @return Đối tượng Account nếu tìm thấy, null nếu không
      */
     public Account getAccountByNumber(String accountNumber) {
         return accounts.stream()
@@ -105,9 +105,9 @@ public class User implements Serializable {
     }
 
     /**
-     * Gets all checking accounts for the user.
+     * Lấy tất cả tài khoản thanh toán (checking) của người dùng.
      *
-     * @return List of CheckingAccount objects
+     * @return Danh sách các đối tượng CheckingAccount
      */
     public List<Account> getCheckingAccounts() {
         List<Account> checkingAccounts = new ArrayList<>();
@@ -120,9 +120,9 @@ public class User implements Serializable {
     }
 
     /**
-     * Gets all savings accounts for the user.
+     * Lấy tất cả tài khoản tiết kiệm (savings) của người dùng.
      *
-     * @return List of SavingsAccount objects
+     * @return Danh sách các đối tượng SavingsAccount
      */
     public List<Account> getSavingsAccounts() {
         List<Account> savingsAccounts = new ArrayList<>();
@@ -135,9 +135,9 @@ public class User implements Serializable {
     }
 
     /**
-     * Gets the total balance across all accounts.
+     * Lấy tổng số dư trên tất cả tài khoản.
      *
-     * @return Total balance
+     * @return Tổng số dư
      */
     public double getTotalBalance() {
         return accounts.stream()

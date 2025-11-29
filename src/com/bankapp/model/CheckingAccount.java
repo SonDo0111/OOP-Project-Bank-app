@@ -1,9 +1,9 @@
 package com.bankapp.model;
 
 /**
- * CheckingAccount class - concrete implementation of Account.
- * Represents a standard checking account with no special restrictions.
- * Demonstrates Inheritance and Polymorphism.
+ * Lớp CheckingAccount - hiện thực cụ thể của Account.
+ * Đại diện cho tài khoản thanh toán thông thường, không có ràng buộc đặc biệt.
+ * Minh họa tính Kế thừa và Đa hình.
  */
 public class CheckingAccount extends Account {
     private static final long serialVersionUID = 1L;
@@ -13,11 +13,11 @@ public class CheckingAccount extends Account {
     private int maxMonthlyWithdrawals;
 
     /**
-     * Constructor for CheckingAccount.
+     * Constructor cho CheckingAccount.
      *
-     * @param accountNumber    Unique account identifier
-     * @param initialBalance   Initial account balance
-     * @param overdraftLimit   Maximum overdraft amount allowed
+     * @param accountNumber    Mã định danh duy nhất cho tài khoản
+     * @param initialBalance   Số dư ban đầu
+     * @param overdraftLimit   Hạn mức thấu chi tối đa cho phép
      */
     public CheckingAccount(String accountNumber, double initialBalance, double overdraftLimit) {
         super(accountNumber, initialBalance);
@@ -27,10 +27,10 @@ public class CheckingAccount extends Account {
     }
 
     /**
-     * Constructor without overdraft limit.
+     * Constructor không có hạn mức thấu chi.
      *
-     * @param accountNumber   Unique account identifier
-     * @param initialBalance  Initial account balance
+     * @param accountNumber   Mã định danh duy nhất cho tài khoản
+     * @param initialBalance  Số dư ban đầu
      */
     public CheckingAccount(String accountNumber, double initialBalance) {
         this(accountNumber, initialBalance, 0.0);
@@ -55,7 +55,7 @@ public class CheckingAccount extends Account {
     // ============= Implementation of Abstract Methods =============
 
     /**
-     * Returns the account type.
+     * Trả về loại tài khoản.
      *
      * @return "CHECKING"
      */
@@ -65,11 +65,11 @@ public class CheckingAccount extends Account {
     }
 
     /**
-     * Determines if a withdrawal can be made.
-     * Checking accounts allow withdrawals if balance + overdraft limit is sufficient.
+     * Xác định xem có thể rút tiền hay không.
+     * Tài khoản thanh toán cho phép rút nếu số dư + hạn mức thấu chi đủ.
      *
-     * @param amount Amount to withdraw
-     * @return true if withdrawal is allowed, false otherwise
+     * @param amount Số tiền cần rút
+     * @return true nếu được phép rút, false nếu không
      */
     @Override
     public boolean canWithdraw(double amount) {
@@ -77,8 +77,8 @@ public class CheckingAccount extends Account {
     }
 
     /**
-     * Applies checking account specific rules.
-     * Currently, no special rules are applied after withdrawal.
+     * Áp dụng các quy tắc riêng cho tài khoản thanh toán.
+     * Hiện tại chưa có quy tắc đặc biệt sau khi rút.
      */
     @Override
     public void applyAccountSpecificRules() {
@@ -91,7 +91,7 @@ public class CheckingAccount extends Account {
     }
 
     /**
-     * Resets monthly withdrawal counter (should be called monthly).
+     * Đặt lại bộ đếm số lần rút tiền trong tháng (nên gọi mỗi tháng).
      */
     public void resetMonthlyWithdrawals() {
         this.monthlyWithdrawals = 0;

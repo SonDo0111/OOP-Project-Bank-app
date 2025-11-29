@@ -8,15 +8,15 @@ import com.bankapp.model.Transaction;
 import java.util.List;
 
 /**
- * TransactionService - Handles transaction operations (deposit, withdraw, transfer).
- * Implements the Single Responsibility Principle - focuses on transaction logic.
+ * TransactionService - Xử lý các thao tác giao dịch (nạp, rút, chuyển khoản).
+ * Tuân theo nguyên lý Trách nhiệm đơn (SRP) - chỉ tập trung vào logic giao dịch.
  */
 public class TransactionService {
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
 
     /**
-     * Constructor - initializes with data store.
+     * Constructor - khởi tạo với kho dữ liệu.
      */
     public TransactionService() {
         this.accountRepository = InMemoryDataStore.getInstance().getAccountRepository();
@@ -24,12 +24,12 @@ public class TransactionService {
     }
 
     /**
-     * Deposits money into an account.
+     * Nạp tiền vào một tài khoản.
      *
-     * @param accountNumber Account number to deposit to
-     * @param amount Amount to deposit
-     * @param description Transaction description
-     * @return true if deposit was successful, false otherwise
+     * @param accountNumber Số tài khoản cần nạp
+     * @param amount Số tiền cần nạp
+     * @param description Mô tả giao dịch
+     * @return true nếu nạp thành công, false nếu thất bại
      */
     public boolean deposit(String accountNumber, double amount, String description) {
         if (amount <= 0) {
@@ -50,12 +50,12 @@ public class TransactionService {
     }
 
     /**
-     * Withdraws money from an account.
+     * Rút tiền từ một tài khoản.
      *
-     * @param accountNumber Account number to withdraw from
-     * @param amount Amount to withdraw
-     * @param description Transaction description
-     * @return true if withdrawal was successful, false otherwise
+     * @param accountNumber Số tài khoản cần rút
+     * @param amount Số tiền cần rút
+     * @param description Mô tả giao dịch
+     * @return true nếu rút thành công, false nếu thất bại
      */
     public boolean withdraw(String accountNumber, double amount, String description) {
         if (amount <= 0) {
@@ -75,13 +75,13 @@ public class TransactionService {
     }
 
     /**
-     * Transfers money between two accounts.
+     * Chuyển tiền giữa hai tài khoản.
      *
-     * @param fromAccountNumber Source account number
-     * @param toAccountNumber Destination account number
-     * @param amount Amount to transfer
-     * @param description Transaction description
-     * @return true if transfer was successful, false otherwise
+     * @param fromAccountNumber Số tài khoản nguồn
+     * @param toAccountNumber Số tài khoản đích
+     * @param amount Số tiền cần chuyển
+     * @param description Mô tả giao dịch
+     * @return true nếu chuyển thành công, false nếu thất bại
      */
     public boolean transfer(String fromAccountNumber, String toAccountNumber, double amount, String description) {
         if (amount <= 0) {
@@ -115,10 +115,10 @@ public class TransactionService {
     }
 
     /**
-     * Gets transaction history for an account.
+     * Lấy lịch sử giao dịch của một tài khoản.
      *
-     * @param accountNumber Account number to get history for
-     * @return List of transactions
+     * @param accountNumber Số tài khoản cần lấy lịch sử
+     * @return Danh sách giao dịch
      */
     public List<Transaction> getTransactionHistory(String accountNumber) {
         Account account = accountRepository.findByAccountNumber(accountNumber);
@@ -129,11 +129,11 @@ public class TransactionService {
     }
 
     /**
-     * Gets recent transactions for an account.
+     * Lấy các giao dịch gần đây của một tài khoản.
      *
-     * @param accountNumber Account number to get history for
-     * @param count Number of recent transactions to retrieve
-     * @return List of recent transactions
+     * @param accountNumber Số tài khoản cần lấy lịch sử
+     * @param count Số lượng giao dịch gần nhất cần lấy
+     * @return Danh sách các giao dịch gần đây
      */
     public List<Transaction> getRecentTransactions(String accountNumber, int count) {
         Account account = accountRepository.findByAccountNumber(accountNumber);
@@ -144,10 +144,10 @@ public class TransactionService {
     }
 
     /**
-     * Gets a specific transaction by ID.
+     * Lấy thông tin một giao dịch cụ thể theo ID.
      *
-     * @param transactionId Transaction ID to search for
-     * @return Transaction object if found, null otherwise
+     * @param transactionId ID giao dịch cần tìm
+     * @return Đối tượng Transaction nếu tìm thấy, null nếu không
      */
     public Transaction getTransaction(String transactionId) {
         return transactionRepository.findById(transactionId);

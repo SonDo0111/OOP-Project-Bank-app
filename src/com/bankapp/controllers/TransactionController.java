@@ -9,14 +9,14 @@ import com.bankapp.utils.InputValidator;
 import java.util.List;
 
 /**
- * TransactionController - Handles transaction operations.
+ * TransactionController - Xử lý các thao tác giao dịch.
  * Implements the MVC Controller pattern - validates input and delegates to service layer.
  */
 public class TransactionController {
     private final TransactionService transactionService;
 
     /**
-     * Constructor - initializes with TransactionService.
+        * Constructor - khởi tạo với TransactionService.
      *
      * @param transactionService TransactionService instance
      */
@@ -25,7 +25,7 @@ public class TransactionController {
     }
 
     /**
-     * Handles deposit operation.
+        * Xử lý thao tác nạp tiền.
      *
      * @param account Account to deposit to
      * @return true if deposit successful, false otherwise
@@ -60,7 +60,7 @@ public class TransactionController {
     }
 
     /**
-     * Handles withdrawal operation.
+        * Xử lý thao tác rút tiền.
      *
      * @param account Account to withdraw from
      * @return true if withdrawal successful, false otherwise
@@ -102,7 +102,7 @@ public class TransactionController {
     }
 
     /**
-     * Handles transfer operation.
+        * Xử lý thao tác chuyển tiền.
      *
      * @param fromAccount Source account
      * @param user Current user (to validate destination account)
@@ -154,7 +154,7 @@ public class TransactionController {
     }
 
     /**
-     * Displays transaction history for an account.
+        * Hiển thị lịch sử giao dịch của một tài khoản.
      *
      * @param account Account to display history for
      */
@@ -175,7 +175,7 @@ public class TransactionController {
     }
 
     /**
-     * Displays detailed information about a specific transaction.
+        * Hiển thị thông tin chi tiết về một giao dịch cụ thể.
      *
      * @param transaction Transaction to display
      */

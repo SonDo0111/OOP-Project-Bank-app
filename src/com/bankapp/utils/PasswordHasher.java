@@ -5,17 +5,17 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 /**
- * PasswordHasher - Utility class for password hashing and verification.
- * Uses SHA-256 algorithm with Base64 encoding for security.
- * Note: In production, use bcrypt or Argon2 instead.
+ * PasswordHasher - Lớp tiện ích dùng để băm và kiểm tra mật khẩu.
+ * Sử dụng thuật toán SHA-256 với mã hóa Base64 để bảo mật.
+ * Lưu ý: Trong môi trường thực tế nên dùng bcrypt hoặc Argon2.
  */
 public class PasswordHasher {
 
     /**
-     * Hashes a password using SHA-256 algorithm.
+     * Băm mật khẩu sử dụng thuật toán SHA-256.
      *
-     * @param password Plain text password to hash
-     * @return Hashed password (Base64 encoded)
+     * @param password Mật khẩu dạng văn bản thuần cần băm
+     * @return Mật khẩu đã băm (mã hóa Base64)
      */
     public static String hashPassword(String password) {
         try {
@@ -28,11 +28,11 @@ public class PasswordHasher {
     }
 
     /**
-     * Verifies a plain text password against a hashed password.
+     * Kiểm tra mật khẩu văn bản thuần với mật khẩu đã băm.
      *
-     * @param plainPassword Plain text password to verify
-     * @param hashedPassword Hashed password to compare against
-     * @return true if passwords match, false otherwise
+     * @param plainPassword Mật khẩu văn bản thuần cần kiểm tra
+     * @param hashedPassword Mật khẩu đã băm dùng để so sánh
+     * @return true nếu mật khẩu khớp, false nếu không
      */
     public static boolean verifyPassword(String plainPassword, String hashedPassword) {
         String hashedInput = hashPassword(plainPassword);

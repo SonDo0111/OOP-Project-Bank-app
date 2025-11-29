@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Abstract base class for all account types.
- * Implements Abstraction principle - defines common interface for all accounts.
- * Uses Encapsulation - hides internal implementation details.
+ * Lớp trừu tượng cơ sở cho tất cả các loại tài khoản.
+ * Thể hiện nguyên lý Trừu tượng - định nghĩa giao diện chung cho mọi tài khoản.
+ * Sử dụng Bao đóng (Encapsulation) - che giấu chi tiết triển khai bên trong.
  */
 public abstract class Account implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -18,10 +18,10 @@ public abstract class Account implements Serializable {
     protected boolean isActive;
 
     /**
-     * Constructor for Account.
+     * Constructor cho Account.
      *
-     * @param accountNumber Unique account identifier
-     * @param initialBalance Initial account balance
+     * @param accountNumber Mã định danh duy nhất của tài khoản
+     * @param initialBalance Số dư ban đầu của tài khoản
      */
     public Account(String accountNumber, double initialBalance) {
         this.accountNumber = accountNumber;
@@ -56,36 +56,36 @@ public abstract class Account implements Serializable {
     // ============= Abstract Methods =============
 
     /**
-     * Abstract method to get account type.
-     * Implements Polymorphism - different implementations in subclasses.
+     * Phương thức trừu tượng để lấy loại tài khoản.
+     * Thể hiện tính Đa hình - mỗi lớp con hiện thực khác nhau.
      *
-     * @return Account type as string
+     * @return Kiểu tài khoản dạng chuỗi
      */
     public abstract String getAccountType();
 
     /**
-     * Abstract method to check withdrawal eligibility.
-     * Different account types may have different withdrawal rules.
+     * Phương thức trừu tượng kiểm tra điều kiện rút tiền.
+     * Mỗi loại tài khoản có quy tắc rút tiền khác nhau.
      *
-     * @param amount Amount to withdraw
-     * @return true if withdrawal is allowed, false otherwise
+     * @param amount Số tiền cần rút
+     * @return true nếu được phép rút, false nếu không
      */
     public abstract boolean canWithdraw(double amount);
 
     /**
-     * Abstract method to apply account-specific rules.
-     * E.g., SavingsAccount may apply interest penalties.
+     * Phương thức trừu tượng áp dụng các quy tắc riêng của từng loại tài khoản.
+     * Ví dụ: SavingsAccount có thể áp dụng phạt hoặc lãi suất.
      */
     public abstract void applyAccountSpecificRules();
 
     // ============= Transaction Methods =============
 
     /**
-     * Deposits money into the account.
+     * Nạp tiền vào tài khoản.
      *
-     * @param amount  Amount to deposit
-     * @param description Description of the deposit
-     * @return true if deposit was successful, false otherwise
+     * @param amount  Số tiền cần nạp
+     * @param description Mô tả giao dịch nạp tiền
+     * @return true nếu nạp thành công, false nếu thất bại
      */
     public boolean deposit(double amount, String description) {
         if (amount <= 0) {
@@ -105,11 +105,11 @@ public abstract class Account implements Serializable {
     }
 
     /**
-     * Withdraws money from the account.
+     * Rút tiền khỏi tài khoản.
      *
-     * @param amount  Amount to withdraw
-     * @param description Description of the withdrawal
-     * @return true if withdrawal was successful, false otherwise
+     * @param amount  Số tiền cần rút
+     * @param description Mô tả giao dịch rút tiền
+     * @return true nếu rút thành công, false nếu thất bại
      */
     public boolean withdraw(double amount, String description) {
         if (amount <= 0 || !canWithdraw(amount) || this.balance < amount) {
@@ -130,11 +130,11 @@ public abstract class Account implements Serializable {
     }
 
     /**
-     * Records a transfer out (sending money to another account).
+     * Ghi nhận giao dịch chuyển tiền đi (gửi tiền sang tài khoản khác).
      *
-     * @param amount  Amount to transfer
-     * @param toAccountNumber Recipient account number
-     * @return true if transfer was recorded, false otherwise
+     * @param amount  Số tiền cần chuyển
+     * @param toAccountNumber Số tài khoản nhận
+     * @return true nếu ghi nhận thành công, false nếu thất bại
      */
     public boolean transfer(double amount, String toAccountNumber) {
         if (amount <= 0 || !canWithdraw(amount) || this.balance < amount) {
@@ -155,10 +155,10 @@ public abstract class Account implements Serializable {
     }
 
     /**
-     * Records a transfer in (receiving money from another account).
+     * Ghi nhận giao dịch nhận tiền (nhận tiền từ tài khoản khác).
      *
-     * @param amount  Amount received
-     * @param fromAccountNumber Sender account number
+     * @param amount  Số tiền nhận được
+     * @param fromAccountNumber Số tài khoản gửi
      */
     public void receiveTransfer(double amount, String fromAccountNumber) {
         this.balance += amount;
@@ -174,17 +174,17 @@ public abstract class Account implements Serializable {
     }
 
     /**
-     * Closes the account (sets it to inactive).
+     * Đóng tài khoản (chuyển trạng thái sang không hoạt động).
      */
     public void closeAccount() {
         this.isActive = false;
     }
 
     /**
-     * Gets recent transactions (last n transactions).
+     * Lấy các giao dịch gần đây (n giao dịch cuối cùng).
      *
-     * @param count Number of recent transactions to retrieve
-     * @return List of recent transactions
+     * @param count Số lượng giao dịch gần nhất cần lấy
+     * @return Danh sách các giao dịch gần đây
      */
     public List<Transaction> getRecentTransactions(int count) {
         int size = transactions.size();

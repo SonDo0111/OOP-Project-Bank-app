@@ -1,17 +1,17 @@
 package com.bankapp.utils;
 
 /**
- * InputValidator - Utility class for input validation.
- * Provides methods to validate user inputs for security and correctness.
+ * InputValidator - Lớp tiện ích để kiểm tra tính hợp lệ của dữ liệu đầu vào.
+ * Cung cấp các phương thức xác thực input của người dùng nhằm đảm bảo an toàn và đúng định dạng.
  */
 public class InputValidator {
 
     /**
-     * Validates a username.
-     * Requirements: 4-20 characters, alphanumeric and underscores only.
+     * Kiểm tra tính hợp lệ của tên đăng nhập.
+     * Yêu cầu: 4-20 ký tự, chỉ gồm chữ, số và dấu gạch dưới.
      *
-     * @param username Username to validate
-     * @return true if valid, false otherwise
+     * @param username Tên đăng nhập cần kiểm tra
+     * @return true nếu hợp lệ, false nếu không
      */
     public static boolean isValidUsername(String username) {
         if (username == null || username.isEmpty()) {
@@ -24,11 +24,11 @@ public class InputValidator {
     }
 
     /**
-     * Validates a password.
-     * Requirements: At least 6 characters.
+     * Kiểm tra tính hợp lệ của mật khẩu.
+     * Yêu cầu: Ít nhất 6 ký tự.
      *
-     * @param password Password to validate
-     * @return true if valid, false otherwise
+     * @param password Mật khẩu cần kiểm tra
+     * @return true nếu hợp lệ, false nếu không
      */
     public static boolean isValidPassword(String password) {
         if (password == null || password.isEmpty()) {
@@ -38,11 +38,11 @@ public class InputValidator {
     }
 
     /**
-     * Validates an email address.
-     * Basic email validation using regex.
+     * Kiểm tra tính hợp lệ của địa chỉ email.
+     * Sử dụng kiểm tra đơn giản bằng regex.
      *
-     * @param email Email to validate
-     * @return true if valid, false otherwise
+     * @param email Email cần kiểm tra
+     * @return true nếu hợp lệ, false nếu không
      */
     public static boolean isValidEmail(String email) {
         if (email == null || email.isEmpty()) {
@@ -52,11 +52,11 @@ public class InputValidator {
     }
 
     /**
-     * Validates a full name.
-     * Requirements: 2-50 characters, letters and spaces only.
+     * Kiểm tra tính hợp lệ của họ tên.
+     * Yêu cầu: 2-50 ký tự, chỉ gồm chữ cái và khoảng trắng.
      *
-     * @param fullName Full name to validate
-     * @return true if valid, false otherwise
+     * @param fullName Họ tên cần kiểm tra
+     * @return true nếu hợp lệ, false nếu không
      */
     public static boolean isValidFullName(String fullName) {
         if (fullName == null || fullName.isEmpty()) {
@@ -69,21 +69,21 @@ public class InputValidator {
     }
 
     /**
-     * Validates a monetary amount.
-     * Requirements: Positive number, max 2 decimal places.
+     * Kiểm tra tính hợp lệ của số tiền.
+     * Yêu cầu: Số dương, tối đa 2 chữ số thập phân.
      *
-     * @param amount Amount to validate
-     * @return true if valid, false otherwise
+     * @param amount Số tiền cần kiểm tra
+     * @return true nếu hợp lệ, false nếu không
      */
     public static boolean isValidAmount(double amount) {
         return amount > 0 && amount <= 999999999.99;
     }
 
     /**
-     * Validates an amount string and converts to double.
+     * Kiểm tra chuỗi số tiền và chuyển sang kiểu double.
      *
-     * @param amountStr Amount string to validate
-     * @return Amount as double, or -1 if invalid
+     * @param amountStr Chuỗi số tiền cần kiểm tra
+     * @return Giá trị double nếu hợp lệ, hoặc -1 nếu không
      */
     public static double parseAmount(String amountStr) {
         try {
@@ -95,11 +95,11 @@ public class InputValidator {
     }
 
     /**
-     * Validates an account number.
-     * Requirements: 8-16 characters, alphanumeric only.
+     * Kiểm tra tính hợp lệ của số tài khoản.
+     * Yêu cầu: 8-16 ký tự, chỉ gồm chữ và số.
      *
-     * @param accountNumber Account number to validate
-     * @return true if valid, false otherwise
+     * @param accountNumber Số tài khoản cần kiểm tra
+     * @return true nếu hợp lệ, false nếu không
      */
     public static boolean isValidAccountNumber(String accountNumber) {
         if (accountNumber == null || accountNumber.isEmpty()) {
@@ -112,10 +112,10 @@ public class InputValidator {
     }
 
     /**
-     * Checks if a string is null or empty.
+     * Kiểm tra một chuỗi có null hoặc rỗng hay không.
      *
-     * @param str String to check
-     * @return true if null or empty, false otherwise
+     * @param str Chuỗi cần kiểm tra
+     * @return true nếu null hoặc rỗng, false nếu không
      */
     public static boolean isNullOrEmpty(String str) {
         return str == null || str.trim().isEmpty();

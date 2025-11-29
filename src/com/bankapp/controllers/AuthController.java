@@ -6,25 +6,25 @@ import com.bankapp.utils.ConsoleUtils;
 import com.bankapp.utils.InputValidator;
 
 /**
- * AuthController - Handles authentication operations.
- * Implements the MVC Controller pattern - validates input and delegates to service layer.
+ * AuthController - Xử lý các thao tác xác thực người dùng.
+ * Áp dụng mẫu Controller trong MVC - kiểm tra dữ liệu và ủy quyền cho tầng service.
  */
 public class AuthController {
     private final AuthService authService;
 
     /**
-     * Constructor - initializes with AuthService.
+     * Constructor - khởi tạo với AuthService.
      *
-     * @param authService AuthService instance
+     * @param authService Đối tượng AuthService
      */
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
 
     /**
-     * Handles user registration flow.
+     * Xử lý luồng đăng ký tài khoản người dùng.
      *
-     * @return User object if registration successful, null otherwise
+     * @return Đối tượng User nếu đăng ký thành công, null nếu thất bại
      */
     public User handleRegistration() {
         ConsoleUtils.printHeader("USER REGISTRATION");
@@ -70,9 +70,9 @@ public class AuthController {
     }
 
     /**
-     * Handles user login flow.
+     * Xử lý luồng đăng nhập của người dùng.
      *
-     * @return User object if login successful, null otherwise
+     * @return Đối tượng User nếu đăng nhập thành công, null nếu thất bại
      */
     public User handleLogin() {
         ConsoleUtils.printHeader("USER LOGIN");

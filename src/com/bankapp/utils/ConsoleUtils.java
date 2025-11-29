@@ -3,8 +3,8 @@ package com.bankapp.utils;
 import java.util.Scanner;
 
 /**
- * ConsoleUtils - Utility class for console input/output operations.
- * Provides helper methods for displaying messages and reading user input.
+ * ConsoleUtils - Lớp tiện ích cho các thao tác nhập/xuất trên console.
+ * Cung cấp các hàm hỗ trợ hiển thị thông báo và đọc dữ liệu từ người dùng.
  */
 public class ConsoleUtils {
     private static final Scanner scanner = new Scanner(System.in);
@@ -12,9 +12,9 @@ public class ConsoleUtils {
     private static final String DASH_SEPARATOR = "-".repeat(60);
 
     /**
-     * Prints a header message.
+     * In một tiêu đề (header).
      *
-     * @param message Message to display as header
+     * @param message Thông điệp cần hiển thị làm tiêu đề
      */
     public static void printHeader(String message) {
         System.out.println("\n" + SEPARATOR);
@@ -23,9 +23,9 @@ public class ConsoleUtils {
     }
 
     /**
-     * Prints a subheader message.
+     * In một tiêu đề phụ (subheader).
      *
-     * @param message Message to display as subheader
+     * @param message Thông điệp cần hiển thị làm tiêu đề phụ
      */
     public static void printSubHeader(String message) {
         System.out.println("\n" + DASH_SEPARATOR);
@@ -34,46 +34,46 @@ public class ConsoleUtils {
     }
 
     /**
-     * Prints a success message.
+     * In thông báo thành công.
      *
-     * @param message Success message
+     * @param message Thông điệp thành công
      */
     public static void printSuccess(String message) {
         System.out.println("✓ " + message);
     }
 
     /**
-     * Prints an error message.
+     * In thông báo lỗi.
      *
-     * @param message Error message
+     * @param message Thông điệp lỗi
      */
     public static void printError(String message) {
         System.out.println("✗ Error: " + message);
     }
 
     /**
-     * Prints an info message.
+     * In thông báo thông tin.
      *
-     * @param message Info message
+     * @param message Thông điệp thông tin
      */
     public static void printInfo(String message) {
         System.out.println("ℹ " + message);
     }
 
     /**
-     * Prints a warning message.
+     * In thông báo cảnh báo.
      *
-     * @param message Warning message
+     * @param message Thông điệp cảnh báo
      */
     public static void printWarning(String message) {
         System.out.println("⚠ " + message);
     }
 
     /**
-     * Reads a string input from the user.
+     * Đọc chuỗi ký tự người dùng nhập từ console.
      *
-     * @param prompt Prompt to display
-     * @return User input
+     * @param prompt Thông điệp gợi ý cần hiển thị
+     * @return Chuỗi người dùng nhập
      */
     public static String readString(String prompt) {
         System.out.print(prompt);
@@ -81,10 +81,10 @@ public class ConsoleUtils {
     }
 
     /**
-     * Reads a numeric input from the user with validation.
+     * Đọc số thực người dùng nhập vào, có kiểm tra hợp lệ.
      *
-     * @param prompt Prompt to display
-     * @return Double value or -1 if invalid
+     * @param prompt Thông điệp gợi ý cần hiển thị
+     * @return Giá trị double hoặc -1 nếu không hợp lệ
      */
     public static double readDouble(String prompt) {
         try {
@@ -97,10 +97,10 @@ public class ConsoleUtils {
     }
 
     /**
-     * Reads an integer input from the user with validation.
+     * Đọc số nguyên người dùng nhập vào, có kiểm tra hợp lệ.
      *
-     * @param prompt Prompt to display
-     * @return Integer value or -1 if invalid
+     * @param prompt Thông điệp gợi ý cần hiển thị
+     * @return Giá trị int hoặc -1 nếu không hợp lệ
      */
     public static int readInt(String prompt) {
         try {
@@ -113,10 +113,10 @@ public class ConsoleUtils {
     }
 
     /**
-     * Reads a password input from the user (does not echo to console).
+     * Đọc mật khẩu người dùng nhập (không hiển thị lại trên console).
      *
-     * @param prompt Prompt to display
-     * @return Password input
+     * @param prompt Thông điệp gợi ý cần hiển thị
+     * @return Chuỗi mật khẩu người dùng nhập
      */
     public static String readPassword(String prompt) {
         System.out.print(prompt);
@@ -124,10 +124,10 @@ public class ConsoleUtils {
     }
 
     /**
-     * Displays a menu and gets user's choice.
+     * Hiển thị một menu và lấy lựa chọn từ người dùng.
      *
-     * @param options Menu options
-     * @return User's choice (0-based index) or -1 if invalid
+     * @param options Các lựa chọn trong menu
+     * @return Chỉ số lựa chọn (bắt đầu từ 0) hoặc -1 nếu không hợp lệ
      */
     public static int readMenuChoice(String... options) {
         for (int i = 0; i < options.length; i++) {
@@ -138,7 +138,7 @@ public class ConsoleUtils {
     }
 
     /**
-     * Pauses execution and waits for user to press Enter.
+     * Tạm dừng chương trình và chờ người dùng nhấn Enter.
      */
     public static void pause() {
         System.out.print("\nPress Enter to continue...");
@@ -146,7 +146,7 @@ public class ConsoleUtils {
     }
 
     /**
-     * Clears the console screen (works on most terminals).
+     * Xóa màn hình console (hoạt động trên hầu hết terminal).
      */
     public static void clearScreen() {
         try {
@@ -165,17 +165,17 @@ public class ConsoleUtils {
     }
 
     /**
-     * Prints a formatted amount with currency symbol.
+     * Định dạng số tiền kèm ký hiệu tiền tệ.
      *
-     * @param amount Amount to format
-     * @return Formatted amount string
+     * @param amount Số tiền cần định dạng
+     * @return Chuỗi số tiền đã định dạng
      */
     public static String formatAmount(double amount) {
         return String.format("$%.2f", amount);
     }
 
     /**
-     * Closes the scanner resource.
+     * Đóng resource Scanner.
      */
     public static void closeScanner() {
         scanner.close();

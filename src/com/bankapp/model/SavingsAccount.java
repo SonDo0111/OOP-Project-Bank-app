@@ -1,9 +1,9 @@
 package com.bankapp.model;
 
 /**
- * SavingsAccount class - concrete implementation of Account.
- * Represents a savings account with withdrawal restrictions and interest rates.
- * Demonstrates Inheritance and Polymorphism.
+ * Lớp SavingsAccount - hiện thực cụ thể của Account.
+ * Đại diện cho tài khoản tiết kiệm với giới hạn rút tiền và lãi suất.
+ * Minh họa tính Kế thừa và Đa hình.
  */
 public class SavingsAccount extends Account {
     private static final long serialVersionUID = 1L;
@@ -14,11 +14,11 @@ public class SavingsAccount extends Account {
     private double withdrawalPenalty; // Penalty for exceeding withdrawal limit
 
     /**
-     * Constructor for SavingsAccount.
+     * Constructor cho SavingsAccount.
      *
-     * @param accountNumber   Unique account identifier
-     * @param initialBalance  Initial account balance
-     * @param interestRate    Annual interest rate (as decimal, e.g., 0.03 for 3%)
+     * @param accountNumber   Mã định danh duy nhất cho tài khoản
+     * @param initialBalance  Số dư ban đầu
+     * @param interestRate    Lãi suất hằng năm (dưới dạng thập phân, ví dụ 0.03 tương đương 3%)
      */
     public SavingsAccount(String accountNumber, double initialBalance, double interestRate) {
         super(accountNumber, initialBalance);
@@ -28,10 +28,10 @@ public class SavingsAccount extends Account {
     }
 
     /**
-     * Constructor with default interest rate.
+     * Constructor dùng lãi suất mặc định.
      *
-     * @param accountNumber   Unique account identifier
-     * @param initialBalance  Initial account balance
+     * @param accountNumber   Mã định danh duy nhất cho tài khoản
+     * @param initialBalance  Số dư ban đầu
      */
     public SavingsAccount(String accountNumber, double initialBalance) {
         this(accountNumber, initialBalance, 0.025); // Default 2.5% interest
@@ -66,7 +66,7 @@ public class SavingsAccount extends Account {
     // ============= Implementation of Abstract Methods =============
 
     /**
-     * Returns the account type.
+     * Trả về loại tài khoản.
      *
      * @return "SAVINGS"
      */
@@ -76,11 +76,11 @@ public class SavingsAccount extends Account {
     }
 
     /**
-     * Determines if a withdrawal can be made.
-     * Savings accounts have monthly withdrawal limits and minimum balance requirements.
+     * Xác định xem có thể rút tiền hay không.
+     * Tài khoản tiết kiệm có giới hạn số lần rút trong tháng và yêu cầu số dư tối thiểu.
      *
-     * @param amount Amount to withdraw
-     * @return true if withdrawal is allowed, false otherwise
+     * @param amount Số tiền cần rút
+     * @return true nếu được phép rút, false nếu không
      */
     @Override
     public boolean canWithdraw(double amount) {
@@ -99,8 +99,8 @@ public class SavingsAccount extends Account {
     }
 
     /**
-     * Applies savings account specific rules.
-     * Increments withdrawal counter and applies withdrawal penalty if limit exceeded.
+     * Áp dụng các quy tắc riêng cho tài khoản tiết kiệm.
+     * Tăng bộ đếm số lần rút và áp dụng phí phạt nếu vượt quá giới hạn.
      */
     @Override
     public void applyAccountSpecificRules() {
@@ -123,11 +123,11 @@ public class SavingsAccount extends Account {
     }
 
     /**
-     * Applies interest to the account balance.
-     * Should be called monthly or periodically.
-     * Annual interest rate is divided by 12 for monthly calculation.
+     * Áp dụng lãi suất lên số dư tài khoản.
+     * Nên được gọi theo tháng hoặc theo chu kỳ.
+     * Lãi suất năm được chia cho 12 để tính theo tháng.
      *
-     * @return Interest amount applied
+     * @return Số tiền lãi được cộng
      */
     public double applyMonthlyInterest() {
         double monthlyRate = interestRate / 12.0;
@@ -149,17 +149,17 @@ public class SavingsAccount extends Account {
     }
 
     /**
-     * Resets monthly withdrawal counter.
-     * Should be called at the start of each month.
+     * Đặt lại bộ đếm số lần rút tiền trong tháng.
+     * Nên được gọi vào đầu mỗi tháng.
      */
     public void resetMonthlyWithdrawals() {
         this.withdrawalsThisMonth = 0;
     }
 
     /**
-     * Calculates projected annual interest based on current balance.
+     * Tính toán số tiền lãi dự kiến trong năm dựa trên số dư hiện tại.
      *
-     * @return Projected annual interest amount
+     * @return Số tiền lãi dự kiến trong năm
      */
     public double getProjectedAnnualInterest() {
         return this.balance * interestRate;

@@ -8,28 +8,28 @@ import com.bankapp.utils.InputValidator;
 import com.bankapp.utils.PasswordHasher;
 
 /**
- * AuthService - Handles user authentication and registration.
- * Implements the Single Responsibility Principle - focuses on auth operations only.
+ * AuthService - Xử lý đăng nhập và đăng ký người dùng.
+ * Tuân theo nguyên lý Trách nhiệm đơn (SRP) - chỉ tập trung vào nghiệp vụ xác thực.
  */
 public class AuthService {
     private final UserRepository userRepository;
 
     /**
-     * Constructor - initializes with data store.
+     * Constructor - khởi tạo với kho dữ liệu.
      */
     public AuthService() {
         this.userRepository = InMemoryDataStore.getInstance().getUserRepository();
     }
 
     /**
-     * Registers a new user.
-     * Validates input and checks for duplicate usernames.
+     * Đăng ký người dùng mới.
+     * Kiểm tra tính hợp lệ của dữ liệu và trùng lặp username.
      *
-     * @param username User's username
-     * @param password User's password
-     * @param fullName User's full name
-     * @param email User's email
-     * @return User object if registration successful, null if failed
+     * @param username Tên đăng nhập của người dùng
+     * @param password Mật khẩu của người dùng
+     * @param fullName Họ tên đầy đủ
+     * @param email Địa chỉ email
+     * @return Đối tượng User nếu đăng ký thành công, null nếu thất bại
      */
     public User register(String username, String password, String fullName, String email) {
         // Validate inputs
@@ -64,11 +64,11 @@ public class AuthService {
     }
 
     /**
-     * Authenticates a user (login).
+     * Xác thực người dùng (đăng nhập).
      *
-     * @param username User's username
-     * @param password User's password
-     * @return User object if login successful, null if failed
+     * @param username Tên đăng nhập
+     * @param password Mật khẩu
+     * @return Đối tượng User nếu đăng nhập thành công, null nếu thất bại
      */
     public User login(String username, String password) {
         if (InputValidator.isNullOrEmpty(username) || InputValidator.isNullOrEmpty(password)) {
@@ -88,20 +88,20 @@ public class AuthService {
     }
 
     /**
-     * Finds a user by their ID.
+     * Tìm người dùng theo ID.
      *
-     * @param userId User ID to search for
-     * @return User object if found, null otherwise
+     * @param userId ID người dùng cần tìm
+     * @return Đối tượng User nếu tìm thấy, null nếu không
      */
     public User getUserById(String userId) {
         return userRepository.findById(userId);
     }
 
     /**
-     * Finds a user by their username.
+     * Tìm người dùng theo tên đăng nhập.
      *
-     * @param username Username to search for
-     * @return User object if found, null otherwise
+     * @param username Tên đăng nhập cần tìm
+     * @return Đối tượng User nếu tìm thấy, null nếu không
      */
     public User getUserByUsername(String username) {
         return userRepository.findByUsername(username);

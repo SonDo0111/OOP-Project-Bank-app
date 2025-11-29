@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * UserRepository - Data access object for User entities.
- * Handles user storage and retrieval operations.
+ * UserRepository - Đối tượng truy xuất dữ liệu cho thực thể User.
+ * Xử lý việc lưu trữ và truy vấn người dùng.
  */
 public class UserRepository {
     private Map<String, User> users; // userId -> User
@@ -16,10 +16,10 @@ public class UserRepository {
     }
 
     /**
-     * Saves a user to the repository.
+     * Lưu một người dùng vào repository.
      *
-     * @param user User object to save
-     * @return true if saved successfully, false if user already exists
+     * @param user Đối tượng User cần lưu
+     * @return true nếu lưu thành công, false nếu người dùng đã tồn tại
      */
     public boolean save(User user) {
         if (user == null || users.containsKey(user.getUserId())) {
@@ -30,20 +30,20 @@ public class UserRepository {
     }
 
     /**
-     * Finds a user by user ID.
+     * Tìm người dùng theo ID.
      *
-     * @param userId User ID to search for
-     * @return User object if found, null otherwise
+     * @param userId ID người dùng cần tìm
+     * @return Đối tượng User nếu tìm thấy, null nếu không
      */
     public User findById(String userId) {
         return users.get(userId);
     }
 
     /**
-     * Finds a user by username.
+     * Tìm người dùng theo tên đăng nhập.
      *
-     * @param username Username to search for
-     * @return User object if found, null otherwise
+     * @param username Tên đăng nhập cần tìm
+     * @return Đối tượng User nếu tìm thấy, null nếu không
      */
     public User findByUsername(String username) {
         return users.values().stream()
@@ -53,10 +53,10 @@ public class UserRepository {
     }
 
     /**
-     * Updates an existing user.
+     * Cập nhật một người dùng đã tồn tại.
      *
-     * @param user User object to update
-     * @return true if updated successfully, false if user not found
+     * @param user Đối tượng User cần cập nhật
+     * @return true nếu cập nhật thành công, false nếu không tìm thấy người dùng
      */
     public boolean update(User user) {
         if (user == null || !users.containsKey(user.getUserId())) {
@@ -67,30 +67,30 @@ public class UserRepository {
     }
 
     /**
-     * Deletes a user from the repository.
+     * Xóa một người dùng khỏi repository.
      *
-     * @param userId User ID to delete
-     * @return true if deleted successfully, false if user not found
+     * @param userId ID người dùng cần xóa
+     * @return true nếu xóa thành công, false nếu không tìm thấy
      */
     public boolean delete(String userId) {
         return users.remove(userId) != null;
     }
 
     /**
-     * Checks if a user exists by ID.
+     * Kiểm tra người dùng có tồn tại theo ID hay không.
      *
-     * @param userId User ID to check
-     * @return true if user exists, false otherwise
+     * @param userId ID người dùng cần kiểm tra
+     * @return true nếu tồn tại, false nếu không
      */
     public boolean exists(String userId) {
         return users.containsKey(userId);
     }
 
     /**
-     * Checks if a username is already taken.
+     * Kiểm tra một tên đăng nhập đã được sử dụng hay chưa.
      *
-     * @param username Username to check
-     * @return true if username exists, false otherwise
+     * @param username Tên đăng nhập cần kiểm tra
+     * @return true nếu đã tồn tại, false nếu chưa
      */
     public boolean usernameExists(String username) {
         return users.values().stream()
@@ -98,16 +98,16 @@ public class UserRepository {
     }
 
     /**
-     * Gets the total number of users.
+     * Lấy tổng số lượng người dùng.
      *
-     * @return User count
+     * @return Số lượng người dùng
      */
     public int getUserCount() {
         return users.size();
     }
 
     /**
-     * Clears all users from the repository.
+     * Xóa toàn bộ người dùng khỏi repository.
      */
     public void clear() {
         users.clear();

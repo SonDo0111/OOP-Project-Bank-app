@@ -9,9 +9,9 @@ import com.bankapp.services.BankService;
 import com.bankapp.utils.ConsoleUtils;
 
 /**
- * BankApplication - Main entry point for the Banking Application.
- * Implements the main menu loop and orchestrates all user interactions.
- * Demonstrates proper application architecture and user flow management.
+ * BankApplication - Điểm vào chính của ứng dụng ngân hàng.
+ * Cài đặt vòng lặp menu chính và điều phối mọi tương tác với người dùng.
+ * Minh họa kiến trúc ứng dụng đúng chuẩn và cách quản lý luồng sử dụng.
  */
 public class BankApplication {
     private final BankService bankService;
@@ -21,7 +21,7 @@ public class BankApplication {
     private User currentUser;
 
     /**
-     * Constructor - initializes all controllers and services.
+     * Constructor - khởi tạo tất cả controller và service.
      */
     public BankApplication() {
         this.bankService = new BankService();
@@ -35,7 +35,7 @@ public class BankApplication {
     }
 
     /**
-     * Starts the application and shows the main menu.
+     * Khởi động ứng dụng và hiển thị menu chính.
      */
     public void start() {
         ConsoleUtils.printHeader("WELCOME TO BANKAPP");
@@ -51,7 +51,7 @@ public class BankApplication {
     }
 
     /**
-     * Displays authentication menu (login/register).
+     * Hiển thị menu xác thực (đăng nhập / đăng ký).
      */
     private void showAuthMenu() {
         ConsoleUtils.printSubHeader("MAIN MENU");
@@ -85,7 +85,7 @@ public class BankApplication {
     }
 
     /**
-     * Displays main menu for logged-in users.
+     * Hiển thị menu chính cho người dùng đã đăng nhập.
      */
     private void showMainMenu() {
         ConsoleUtils.clearScreen();
@@ -122,7 +122,7 @@ public class BankApplication {
     }
 
     /**
-     * Displays menu for opening a new account.
+     * Hiển thị menu để mở tài khoản mới.
      */
     private void showOpenAccountMenu() {
         int choice = ConsoleUtils.readMenuChoice(
@@ -149,7 +149,7 @@ public class BankApplication {
     }
 
     /**
-     * Displays menu for managing an account (transactions, history, etc.).
+     * Hiển thị menu quản lý tài khoản (giao dịch, lịch sử, v.v.).
      */
     private void showManageAccountMenu() {
         ConsoleUtils.printSubHeader("SELECT ACCOUNT");
@@ -199,9 +199,9 @@ public class BankApplication {
     }
 
     /**
-     * Main method - entry point for the application.
+     * Phương thức main - điểm vào của ứng dụng.
      *
-     * @param args Command-line arguments (not used)
+     * @param args Tham số dòng lệnh (không sử dụng)
      */
     public static void main(String[] args) {
         try {

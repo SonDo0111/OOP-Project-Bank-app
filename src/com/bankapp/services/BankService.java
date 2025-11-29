@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * BankService - Facade service that coordinates multiple services.
- * Provides a unified interface for bank operations.
- * Implements the Facade Pattern to simplify client interactions.
+ * BankService - Service facade điều phối nhiều service khác.
+ * Cung cấp một giao diện thống nhất cho các thao tác ngân hàng.
+ * Áp dụng mẫu thiết kế Facade để đơn giản hóa việc tương tác từ phía client.
  */
 public class BankService {
     private final AuthService authService;
@@ -16,7 +16,7 @@ public class BankService {
     private final Map<String, SavingsAccount> interestRates; // For demonstration
 
     /**
-     * Constructor - initializes all sub-services.
+     * Constructor - khởi tạo tất cả các service con.
      */
     public BankService() {
         this.authService = new AuthService();
@@ -26,36 +26,36 @@ public class BankService {
     }
 
     /**
-     * Gets the AuthService.
+     * Lấy AuthService.
      *
-     * @return AuthService instance
+     * @return Đối tượng AuthService
      */
     public AuthService getAuthService() {
         return authService;
     }
 
     /**
-     * Gets the AccountService.
+     * Lấy AccountService.
      *
-     * @return AccountService instance
+     * @return Đối tượng AccountService
      */
     public AccountService getAccountService() {
         return accountService;
     }
 
     /**
-     * Gets the TransactionService.
+     * Lấy TransactionService.
      *
-     * @return TransactionService instance
+     * @return Đối tượng TransactionService
      */
     public TransactionService getTransactionService() {
         return transactionService;
     }
 
     /**
-     * Gets system statistics.
+     * Lấy thống kê hệ thống.
      *
-     * @return Statistics summary
+     * @return Chuỗi tóm tắt thống kê
      */
     public String getSystemStats() {
         StringBuilder stats = new StringBuilder();

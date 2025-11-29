@@ -11,18 +11,18 @@ import com.bankapp.utils.InputValidator;
 import java.util.List;
 
 /**
- * AccountController - Handles account operations.
- * Implements the MVC Controller pattern - validates input and delegates to service layer.
+ * AccountController - Xử lý các thao tác liên quan đến tài khoản.
+ * Áp dụng mẫu Controller trong MVC - kiểm tra dữ liệu đầu vào và ủy quyền cho tầng service.
  */
 public class AccountController {
     private final AccountService accountService;
     private final TransactionService transactionService;
 
     /**
-     * Constructor - initializes with services.
+     * Constructor - khởi tạo với các service cần thiết.
      *
-     * @param accountService AccountService instance
-     * @param transactionService TransactionService instance
+     * @param accountService Đối tượng AccountService
+     * @param transactionService Đối tượng TransactionService
      */
     public AccountController(AccountService accountService, TransactionService transactionService) {
         this.accountService = accountService;
@@ -30,9 +30,9 @@ public class AccountController {
     }
 
     /**
-     * Displays all accounts for a user.
+     * Hiển thị tất cả tài khoản của một người dùng.
      *
-     * @param user User object
+     * @param user Đối tượng User
      */
     public void displayUserAccounts(User user) {
         List<Account> accounts = user.getAccounts();
@@ -51,10 +51,10 @@ public class AccountController {
     }
 
     /**
-     * Handles opening a new checking account.
+     * Xử lý mở tài khoản thanh toán (checking account) mới.
      *
-     * @param user User object
-     * @return CheckingAccount if successful, null otherwise
+     * @param user Đối tượng User
+     * @return Đối tượng CheckingAccount nếu thành công, null nếu thất bại
      */
     public CheckingAccount handleOpenCheckingAccount(User user) {
         ConsoleUtils.printHeader("OPEN CHECKING ACCOUNT");
@@ -87,10 +87,10 @@ public class AccountController {
     }
 
     /**
-     * Handles opening a new savings account.
+     * Xử lý mở tài khoản tiết kiệm (savings account) mới.
      *
-     * @param user User object
-     * @return SavingsAccount if successful, null otherwise
+     * @param user Đối tượng User
+     * @return Đối tượng SavingsAccount nếu thành công, null nếu thất bại
      */
     public SavingsAccount handleOpenSavingsAccount(User user) {
         ConsoleUtils.printHeader("OPEN SAVINGS ACCOUNT");
@@ -124,10 +124,10 @@ public class AccountController {
     }
 
     /**
-     * Selects an account from user's accounts.
+     * Chọn một tài khoản từ danh sách tài khoản của người dùng.
      *
-     * @param user User object
-     * @return Selected Account or null
+     * @param user Đối tượng User
+     * @return Tài khoản được chọn hoặc null nếu không hợp lệ
      */
     public Account selectAccount(User user) {
         List<Account> accounts = user.getAccounts();
@@ -161,9 +161,9 @@ public class AccountController {
     }
 
     /**
-     * Displays account details.
+     * Hiển thị chi tiết tài khoản.
      *
-     * @param account Account to display
+     * @param account Tài khoản cần hiển thị
      */
     public void displayAccountDetails(Account account) {
         ConsoleUtils.printSubHeader("ACCOUNT DETAILS");

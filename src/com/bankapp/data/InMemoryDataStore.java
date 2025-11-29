@@ -1,10 +1,10 @@
 package com.bankapp.data;
 
 /**
- * InMemoryDataStore - Central data storage for the banking application.
- * Implements the Repository Pattern for data access abstraction.
- * All data is stored in memory and will be lost on application shutdown
- * (unless extended with file/database persistence).
+ * InMemoryDataStore - Kho lưu trữ dữ liệu trung tâm cho ứng dụng ngân hàng.
+ * Áp dụng Repository Pattern để trừu tượng hóa tầng truy xuất dữ liệu.
+ * Tất cả dữ liệu được lưu trong bộ nhớ và sẽ mất khi ứng dụng tắt
+ * (trừ khi được mở rộng thêm cơ chế lưu file / cơ sở dữ liệu).
  */
 public class InMemoryDataStore {
     private static InMemoryDataStore instance;
@@ -13,7 +13,7 @@ public class InMemoryDataStore {
     private TransactionRepository transactionRepository;
 
     /**
-     * Private constructor for Singleton pattern.
+     * Constructor private dùng cho mẫu thiết kế Singleton.
      */
     private InMemoryDataStore() {
         this.userRepository = new UserRepository();
@@ -22,9 +22,9 @@ public class InMemoryDataStore {
     }
 
     /**
-     * Gets the singleton instance of InMemoryDataStore.
+     * Lấy thể hiện duy nhất (singleton) của InMemoryDataStore.
      *
-     * @return InMemoryDataStore instance
+     * @return Đối tượng InMemoryDataStore
      */
     public static synchronized InMemoryDataStore getInstance() {
         if (instance == null) {
@@ -34,35 +34,35 @@ public class InMemoryDataStore {
     }
 
     /**
-     * Gets the user repository.
+     * Lấy repository quản lý người dùng.
      *
-     * @return UserRepository instance
+     * @return Đối tượng UserRepository
      */
     public UserRepository getUserRepository() {
         return userRepository;
     }
 
     /**
-     * Gets the account repository.
+     * Lấy repository quản lý tài khoản.
      *
-     * @return AccountRepository instance
+     * @return Đối tượng AccountRepository
      */
     public AccountRepository getAccountRepository() {
         return accountRepository;
     }
 
     /**
-     * Gets the transaction repository.
+     * Lấy repository quản lý giao dịch.
      *
-     * @return TransactionRepository instance
+     * @return Đối tượng TransactionRepository
      */
     public TransactionRepository getTransactionRepository() {
         return transactionRepository;
     }
 
     /**
-     * Clears all data from the data store.
-     * Useful for testing or resetting the application.
+     * Xóa toàn bộ dữ liệu trong kho dữ liệu.
+     * Hữu ích cho việc kiểm thử hoặc đặt lại ứng dụng.
      */
     public void clearAll() {
         userRepository.clear();

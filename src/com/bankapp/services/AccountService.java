@@ -9,26 +9,26 @@ import com.bankapp.model.SavingsAccount;
 import com.bankapp.utils.IDGenerator;
 
 /**
- * AccountService - Handles account operations (create, retrieve, close accounts).
- * Implements the Single Responsibility Principle - focuses on account management.
+ * AccountService - Xử lý các thao tác tài khoản (tạo, truy vấn, đóng tài khoản).
+ * Tuân theo nguyên lý Trách nhiệm đơn (SRP) - chỉ tập trung vào quản lý tài khoản.
  */
 public class AccountService {
     private final AccountRepository accountRepository;
 
     /**
-     * Constructor - initializes with data store.
+     * Constructor - khởi tạo với kho dữ liệu.
      */
     public AccountService() {
         this.accountRepository = InMemoryDataStore.getInstance().getAccountRepository();
     }
 
     /**
-     * Creates a new checking account for a user.
+     * Tạo tài khoản thanh toán (checking) mới cho người dùng.
      *
-     * @param user User to create account for
-     * @param initialBalance Initial account balance
-     * @param overdraftLimit Maximum overdraft amount
-     * @return CheckingAccount object if successful, null if failed
+     * @param user Người dùng cần tạo tài khoản
+     * @param initialBalance Số dư ban đầu
+     * @param overdraftLimit Hạn mức thấu chi tối đa
+     * @return Đối tượng CheckingAccount nếu thành công, null nếu thất bại
      */
     public CheckingAccount createCheckingAccount(User user, double initialBalance, double overdraftLimit) {
         if (user == null || initialBalance < 0 || overdraftLimit < 0) {
@@ -49,12 +49,12 @@ public class AccountService {
     }
 
     /**
-     * Creates a new savings account for a user.
+     * Tạo tài khoản tiết kiệm (savings) mới cho người dùng.
      *
-     * @param user User to create account for
-     * @param initialBalance Initial account balance
-     * @param interestRate Annual interest rate
-     * @return SavingsAccount object if successful, null if failed
+     * @param user Người dùng cần tạo tài khoản
+     * @param initialBalance Số dư ban đầu
+     * @param interestRate Lãi suất hằng năm
+     * @return Đối tượng SavingsAccount nếu thành công, null nếu thất bại
      */
     public SavingsAccount createSavingsAccount(User user, double initialBalance, double interestRate) {
         if (user == null || initialBalance < 0 || interestRate < 0) {
@@ -75,20 +75,20 @@ public class AccountService {
     }
 
     /**
-     * Retrieves an account by its account number.
+     * Lấy thông tin tài khoản theo số tài khoản.
      *
-     * @param accountNumber Account number to search for
-     * @return Account object if found, null otherwise
+     * @param accountNumber Số tài khoản cần tìm
+     * @return Đối tượng Account nếu tìm thấy, null nếu không
      */
     public Account getAccount(String accountNumber) {
         return accountRepository.findByAccountNumber(accountNumber);
     }
 
     /**
-     * Closes an account.
+     * Đóng một tài khoản.
      *
-     * @param accountNumber Account number to close
-     * @return true if account was closed, false otherwise
+     * @param accountNumber Số tài khoản cần đóng
+     * @return true nếu đóng thành công, false nếu không
      */
     public boolean closeAccount(String accountNumber) {
         Account account = accountRepository.findByAccountNumber(accountNumber);
@@ -101,20 +101,20 @@ public class AccountService {
     }
 
     /**
-     * Checks if an account exists.
+     * Kiểm tra một tài khoản có tồn tại hay không.
      *
-     * @param accountNumber Account number to check
-     * @return true if account exists, false otherwise
+     * @param accountNumber Số tài khoản cần kiểm tra
+     * @return true nếu tồn tại, false nếu không
      */
     public boolean accountExists(String accountNumber) {
         return accountRepository.exists(accountNumber);
     }
 
     /**
-     * Gets account balance.
+     * Lấy số dư của tài khoản.
      *
-     * @param accountNumber Account number
-     * @return Account balance, or -1 if account not found
+     * @param accountNumber Số tài khoản
+     * @return Số dư tài khoản, hoặc -1 nếu không tìm thấy
      */
     public double getAccountBalance(String accountNumber) {
         Account account = getAccount(accountNumber);
@@ -122,10 +122,10 @@ public class AccountService {
     }
 
     /**
-     * Gets account type.
+     * Lấy loại tài khoản.
      *
-     * @param accountNumber Account number
-     * @return Account type (CHECKING, SAVINGS), or null if not found
+     * @param accountNumber Số tài khoản
+     * @return Kiểu tài khoản (CHECKING, SAVINGS), hoặc null nếu không tìm thấy
      */
     public String getAccountType(String accountNumber) {
         Account account = getAccount(accountNumber);

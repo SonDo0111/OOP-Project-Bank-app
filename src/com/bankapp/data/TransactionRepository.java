@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * TransactionRepository - Data access object for Transaction entities.
- * Handles transaction storage and retrieval operations.
+ * TransactionRepository - Đối tượng truy xuất dữ liệu cho thực thể Transaction.
+ * Xử lý việc lưu trữ và truy vấn các giao dịch.
  */
 public class TransactionRepository {
     private Map<String, List<Transaction>> accountTransactions; // accountNumber -> List of Transactions
@@ -20,11 +20,11 @@ public class TransactionRepository {
     }
 
     /**
-     * Records a transaction in the repository.
+     * Ghi nhận một giao dịch vào repository.
      *
-     * @param accountNumber Account number for the transaction
-     * @param transaction Transaction object to save
-     * @return true if saved successfully
+     * @param accountNumber Số tài khoản liên quan tới giao dịch
+     * @param transaction Đối tượng Transaction cần lưu
+     * @return true nếu lưu thành công
      */
     public boolean saveTransaction(String accountNumber, Transaction transaction) {
         if (accountNumber == null || transaction == null) {
@@ -36,21 +36,21 @@ public class TransactionRepository {
     }
 
     /**
-     * Gets all transactions for a specific account.
+     * Lấy tất cả giao dịch của một tài khoản.
      *
-     * @param accountNumber Account number to retrieve transactions for
-     * @return List of transactions for the account
+     * @param accountNumber Số tài khoản cần lấy danh sách giao dịch
+     * @return Danh sách giao dịch của tài khoản
      */
     public List<Transaction> getTransactionsByAccount(String accountNumber) {
         return new ArrayList<>(accountTransactions.getOrDefault(accountNumber, new ArrayList<>()));
     }
 
     /**
-     * Gets recent transactions for an account.
+     * Lấy các giao dịch gần đây của một tài khoản.
      *
-     * @param accountNumber Account number to retrieve transactions for
-     * @param count Number of recent transactions to retrieve
-     * @return List of recent transactions
+     * @param accountNumber Số tài khoản cần lấy giao dịch
+     * @param count Số lượng giao dịch gần nhất cần lấy
+     * @return Danh sách các giao dịch gần đây
      */
     public List<Transaction> getRecentTransactions(String accountNumber, int count) {
         List<Transaction> transactions = getTransactionsByAccount(accountNumber);
@@ -60,10 +60,10 @@ public class TransactionRepository {
     }
 
     /**
-     * Gets a transaction by its ID.
+     * Lấy một giao dịch theo ID.
      *
-     * @param transactionId Transaction ID to search for
-     * @return Transaction object if found, null otherwise
+     * @param transactionId ID giao dịch cần tìm
+     * @return Đối tượng Transaction nếu tìm thấy, null nếu không
      */
     public Transaction findById(String transactionId) {
         return allTransactions.stream()
@@ -73,26 +73,26 @@ public class TransactionRepository {
     }
 
     /**
-     * Gets the transaction count for a specific account.
+     * Lấy số lượng giao dịch của một tài khoản.
      *
-     * @param accountNumber Account number
-     * @return Transaction count for the account
+     * @param accountNumber Số tài khoản
+     * @return Số lượng giao dịch của tài khoản
      */
     public int getTransactionCount(String accountNumber) {
         return accountTransactions.getOrDefault(accountNumber, new ArrayList<>()).size();
     }
 
     /**
-     * Gets the total transaction count across all accounts.
+     * Lấy tổng số lượng giao dịch trên tất cả tài khoản.
      *
-     * @return Total transaction count
+     * @return Tổng số giao dịch
      */
     public int getTotalTransactionCount() {
         return allTransactions.size();
     }
 
     /**
-     * Clears all transactions.
+     * Xóa toàn bộ giao dịch.
      */
     public void clear() {
         accountTransactions.clear();
